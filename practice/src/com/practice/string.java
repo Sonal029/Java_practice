@@ -14,8 +14,9 @@ public class string {
 			int n = sc.nextInt();
 			if (n == 1) {
 				System.out.println("Enter Element");
-				stk.push(sc.nextInt());
-				System.out.println("Element added sucessfully");
+				int a=sc.nextInt();
+				stk.push(a);
+				System.out.println(a+"  added sucessfully");
 			} else if (n == 2) {
 				if (stk.isEmpty()) {
 					continue;
