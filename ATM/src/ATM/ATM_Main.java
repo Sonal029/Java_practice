@@ -13,7 +13,7 @@ public class ATM_Main {
 class atm
 {
 	Scanner sc = new Scanner(System.in);
-	float balance;
+	float balance=0.0f;
 	int pin = 2134;
 	
 	
@@ -63,7 +63,7 @@ class atm
 			}
 			case 4:
 			{
-				Menu();
+				break;
 			}
 			default:
 			{
