@@ -1,17 +1,22 @@
-let num=1211;
-let temp=num;
-let rev=0;
-while(temp!=0)
+function reverse(num)
 {
-    let d=temp%10;
-    temp=Math.floor(temp/10);
-    rev=rev*10+d;
+    let temp=num;
+    let rev=0;
+    while(temp!=0)
+    {
+        let d=temp%10;
+        temp=Math.floor(temp/10);
+        rev=rev*10+d;
+    }
+    return rev;
 }
-if(rev==num)
-{
+ let num=121;
+ rev=reverse(num);
+ if(rev==num)
+ {
     console.log(num+" is pallindrome");
-}
-else
-{
+ }
+ else
+ {
     console.log(num+" is not pallindrome");
-}
+ }

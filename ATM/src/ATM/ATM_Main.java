@@ -1,23 +1,4 @@
-package ATM;
 
-import java.util.Scanner;
-
-public class ATM_Main {
-
-	public static void main(String[] args) {
-		atm a = new atm();
-		a.checkPin();
-	}
-}
-
-class atm
-{
-	Scanner sc = new Scanner(System.in);
-	float balance=0.0f;
-	int pin = 2134;
-	
-	
-	public void checkPin()
 	{
 		System.out.println("please enter your 4 digit pin");
 		
@@ -71,7 +52,7 @@ class atm
 				Menu();
 				
 			}
-		}
+		}t
 		
 		
 	}

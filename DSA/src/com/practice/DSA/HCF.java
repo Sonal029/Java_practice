@@ -20,6 +20,6 @@ public class HCF
 				max=Math.max(i, max);
 			}
 		}
-		System.out.println("HCF is"+max);
+		System.out.println("HCF is: "+max);
 	}
 }
