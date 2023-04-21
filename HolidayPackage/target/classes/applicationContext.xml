@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="dt" class="java.time.LocalDate" factory-method="parse">
+	<constructor-arg   value="2023-12-31"/>
+</bean>
+    <bean id ="tourist" class="holidayPackage.Tourist">
+		<constructor-arg name="name" value="Sonal"/>
+		<constructor-arg name="age" value="25"/>
+		<constructor-arg name="aadhar_id" value="123456789123"/>
+	</bean>
+	
+	
+	
+	
+	
+    <bean id="holidayPackage" class="holidayPackage.HolidayPackage">
+		<property name="package_name" value="Way to Hawai"/>
+		<property name="tourist" ref="tourist"/>
+		<property name="package_expiry" ref="dt" />
+        <property name="package_price" value="5000"/>
+	</bean>  
+        <!-- collaborators and configuration for this bean go here -->
+
+    
+
+</beans>
+
+
+ 
+
+ 

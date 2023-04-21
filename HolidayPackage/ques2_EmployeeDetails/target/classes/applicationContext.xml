@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id ="sales" class="com.ques2.Department">
+		<constructor-arg name="deptId" value="1"/>
+		<constructor-arg name="deptName" value="sales"/>
+		<constructor-arg name="location" value="Delhi"/>
+	</bean>
+	 <bean id ="accounts" class="com.ques2.Department">
+		<constructor-arg name="deptId" value="2"/>
+		<constructor-arg name="deptName" value="accounts"/>
+		<constructor-arg name="location" value="Delhi"/>
+	</bean>
+	 <bean id ="marketing" class="com.ques2.Department">
+		<constructor-arg name="deptId" value="3"/>
+		<constructor-arg name="deptName" value="marketing"/>
+		<constructor-arg name="location" value="Delhi"/>
+	</bean>
+	
+	<bean id="e1" class="com.ques2.Employee">
+		<constructor-arg name="empId" value="1"/>
+		<constructor-arg name="empName" value="abc"/>
+		<constructor-arg name="address" value="Delhi"/>
+		<constructor-arg name="salary" value="5000"/>
+	</bean>
+	<bean id="e2" class="com.ques2.Employee">
+		<constructor-arg name="empId" value="2"/>
+		<constructor-arg name="empName" value="bcd"/>
+		<constructor-arg name="address" value="Delhi"/>
+		<constructor-arg name="salary" value="50000"/>
+	</bean>
+	<bean id="e3" class="com.ques2.Employee">
+		<constructor-arg name="empId" value="3"/>
+		<constructor-arg name="empName" value="cde"/>
+		<constructor-arg name="address" value="Delhi"/>
+		<constructor-arg name="salary" value="500000"/>
+	</bean>
+	<bean id ="demo" class="com.ques2.Demo" scope="prototype" lazy-init="true" init-method="myInit" destroy-method="cleanUp">
+		 <property name="theMap">
+			 <map>
+				 <entry key-ref="sales" value-ref="e1"/>
+				 <entry key-ref="accounts" value-ref="e2"/>
+				 <entry key-ref="marketing" value-ref="e3"/>
+			 </map>
+		 </property>
+	</bean>
+	
+        <!-- collaborators and configuration for this bean go here -->
+
+    
+
+</beans>
+
+
+ 
+
+ 
