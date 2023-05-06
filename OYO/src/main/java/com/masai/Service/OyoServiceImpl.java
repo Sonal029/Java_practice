@@ -115,13 +115,15 @@ public class OyoServiceImpl implements OyoService{
 		RoomType roomType1 = roomTypeRepo.findById(roomId).orElseThrow(()->new OYOException("No roomType found") ) ;
         List<Hotel> hotels = hotelRepo.findByCity(city) ;
         if(hotels.isEmpty()) throw new OYOException("no hotel found") ;
-        List<RoomType> roomTypes = hotels.get(0).getRoomType() ;
+        List<RoomType> roomTypes = hotels.get(0).getList() ;
         if(roomTypes.isEmpty()) throw new OYOException("No room available") ;
-        List<Booking> list = customer.getBookingList().stream().filter(a-> a.getRoom().getRoomTypeId() == newRoomId).toList();
+        List<Booking> list = customer.getBookingList().stream().filter(a-> a.getRoomType().getRoomId() == roomId).toList();
         if(list.isEmpty()) throw new OYOException("No booking found") ;
         Booking booking = list.get(0) ;
-        booking.setRoom(roomType1);
-        bookingRepository.save(booking) ;
+        booking.setRoomType(roomType1);
+        bookingRepo.save(booking) ;
         return  true ;
 	}
+	
+	
 }
