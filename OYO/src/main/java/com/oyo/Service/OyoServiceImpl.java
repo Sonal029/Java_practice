@@ -1,4 +1,4 @@
-package com.masai.Service;
+package com.oyo.Service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -58,12 +58,6 @@ public class OyoServiceImpl implements OyoService{
 		return newHotel;
 	}
 	
-	
-	/*
-	 * Implement a method for a Customer to create bookings. Validate the customerId, roomId, and bookingDate, 
-	 * and handle the case where either of them does not exist or bookingDate is not in the past.
-	 */
-	
 	public Booking makeBooking(Integer CustomerId, Integer RoomId, LocalDate bookingDate)
 	{
 		Customer customer = customerRepo.findById(CustomerId).orElseThrow(()-> new OYOException("no customer found")) ;
@@ -81,11 +75,6 @@ public class OyoServiceImpl implements OyoService{
         return bookingRepo.save(booking);
 	}
 	
-	
-	/*
-	 * Implement a method for a Hotel to create room types. Validate the hotelId, and handle the case where it does not exist. 
-	 */
-	
 	public RoomType createRoomType(Integer hotelId , RoomType roomType)
 	{
 		
@@ -100,14 +89,6 @@ public class OyoServiceImpl implements OyoService{
 		return roomTypeRepo.save(roomType);
 		
 	}
-	
-	
-	/*4. Implement a method for a Customer to search by **(city & room type)** and book rooms.               **[ Points: 1 ]**
-    * 1. **Description**: The customer will search the room on the app by city & room type, then it will return a List of available room types. From this output, customers can request to book any of the room.
-    * 2. Validate the customerId , room type and city. Handle the case where either of them does not exist.
-    /*
-     * 
-     */
 	
 	public Boolean updateBooking(String city, Integer roomId, Integer customerId)
 	{
@@ -125,5 +106,17 @@ public class OyoServiceImpl implements OyoService{
         return  true ;
 	}
 	
+	public List<Booking> getBooking(int customerId, LocalDate day1 , LocalDate day2) throws OYOException {
+	        Customer customer = customerRepo.findById(customerId).orElseThrow(()-> new OYOException("no customer exist"));
+	        List<Booking> bookingList = bookingRepo.findByCustomerAndBookingDateBetween(customer,day1,day2) ;
+	        if (bookingList.isEmpty()) throw new OYOException("No booking found") ;
+	        return bookingList;
+	    }
+
+	public List<Hotel> getHotelList() throws OYOException {
+	        List<Hotel> hotels = hotelRepo.findAll();
+	        if(hotels.isEmpty()) throw new OYOException("No hotel is present");
+	        return hotels;
+	    }
 	
 }
